@@ -3,7 +3,8 @@
   hosts: all
 
   vars_files:
-    - default.config.yml
+    -  config.yml
+  #  - default.config.yml
 
   pre_tasks:
     - name: Include playbook configuration.
@@ -41,11 +42,6 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-
-    - import_tasks: tasks/sublime-text.yml
-      when: configure_sublime
-      tags: ['sublime-text']
-
     - name: Run post-provision task files in a block.
       tags: ['post']
       block:
