@@ -1,11 +1,29 @@
-#[all]
+#...
+# [all]
 # 127.0.0.1  ansible_connection=local
 # 10.97.7.6 ansible_user=klink
 macs:
   hosts:
     macstudio:
-      ansible_user=klink
+      ansible_user: klink
       ansible_host: 10.97.7.6
     macbook2023:
-      ansible_user=klink
+      ansible_user: klink
       ansible_host: 10.97.7.1
+laptops:
+  hosts:
+    macbooks2018:
+      ansible_user: klink
+      ansible_host: 10.97.7.2
+    macbook2015:
+      ansible_user: klink
+      ansible_host: 10.97.7.3
+    macbook2023:
+      ansible_user: klink
+      ansible_host: 10.97.6.54
+    
+secondary_int:
+  hosts:
+    macbook2023_usb:
+      ansible_user: klink
+      ansible_host: 10.97.7.14

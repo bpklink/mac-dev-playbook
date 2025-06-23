@@ -1,6 +1,6 @@
 ---
 - name: Configure host.
-  hosts: all
+  hosts: macstudio
 
   vars_files:
     -  config.yml
@@ -42,7 +42,7 @@
 
     - import_tasks: tasks/extra-packages.yml
       tags: ['extra-packages']
-      
+
     - name: Run post-provision task files in a block.
       tags: ['post']
       block:
