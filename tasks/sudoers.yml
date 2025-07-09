@@ -5,7 +5,6 @@
   register: sed_which_result
   changed_when: false
   when: sed_path is undefined
-
 - name: Define sed_path variable.
   set_fact:
     sed_path: "{{ sed_which_result.stdout }}"
