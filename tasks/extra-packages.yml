@@ -5,6 +5,7 @@
     arguments: "{{ item.name | default(item) }} {{ item.version | default('@stable') }}"
     # Ansible 2.4 supports `global_command` making `working_dir` optional.
     working_dir: "{{ lookup('env', 'COMPOSER_HOME') | default('~/.composer', true) }}"
+    path: "{{ composer_home }}"
   loop: "{{ composer_packages }}"
 
 - name: Install global NPM packages.
@@ -14,6 +15,8 @@
     version: "{{ item.version | default(omit) }}"
     global: true
     executable: "{{ item.executable | default(omit) }}"
+    path: "{ npm_home }}"
+    executable: "{{ npm_home}}/bin"
   loop: "{{ npm_packages }}"
 
 - name: Install global Pip packages.
@@ -22,6 +25,7 @@
     state: "{{ item.state | default('present') }}"
     version: "{{ item.version | default(omit) }}"
     executable: "{{ item.executable | default('pip3') }}"
+    path: "{{ pip_home }}"
   loop: "{{ pip_packages }}"
 
 - name: Install global Ruby gems.
