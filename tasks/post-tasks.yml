@@ -15,9 +15,10 @@
       dest: "/Users/{{ ansible_user }}/{{ item.parent }}"
       recursive: "{{ item.recurse }}" 
       force: "{{ item.overwrite }}"
-      owner: "{{ ansible_user }}"
-      mode: 0644
+      mode: "push"
+      owner: true
+      delay_updates: true
+      archive: true
     become: true
     when: "{{ item.xfer }}"
     loop: "{{ sync_user }}"
-   
