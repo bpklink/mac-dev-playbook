@@ -1,7 +1,23 @@
 ---
-  - name: Synchronize list home directories
+#  - name: Synchronize list home directories
+#    ansible.posix.synchronize:
+#      mode: push
+#      src: "/Users/{{ ansible_user }}/{{ item.src }}"
+#      dest: "/Users/{{ ansible_user }}/"
+#      recursive: true
+#      archive: true
+#      delay_updates: true
+#    loop: "{{ sync_dirs }}" 
+
+  - name: Copy user files and directories
     ansible.posix.synchronize:
-      src: "/Volumes/Users/{{ ansible_user }}/{{ item.src }}"
-      dest: "rsync://{{ ansible_host }}/Users/{{ ansible_user }}/{{ item.dest | default('', true) }}"
-      recursive: true
-    loop: "{{ sync_dirs }}" 
+      src: "/Users/{{ ansible_user }}/{{ item.src }}"
+      dest: "/Users/{{ ansible_user }}/{{ item.parent }}"
+      recursive: "{{ item.recurse }}" 
+      force: "{{ item.overwrite }}"
+      owner: "{{ ansible_user }}"
+      mode: 0644
+    become: true
+    when: "{{ item.xfer }}"
+    loop: "{{ sync_user }}"
+   

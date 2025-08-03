@@ -17,9 +17,9 @@
     - role: elliotweiser.osx-command-line-tools
     - role: geerlingguy.mac.homebrew
       tags: ['homebrew']
-    - role: geerlingguy.dotfiles
-      when: configure_dotfiles
-      tags: ['dotfiles']
+#    - role: geerlingguy.dotfiles
+#      when: configure_dotfiles
+#      tags: ['dotfiles']
 #    - role: geerlingguy.mac.mas
 #      when: mas_installed_apps or mas_installed_app_ids
 #      tags: ['mas']
@@ -45,7 +45,7 @@
       tags: ['extra-packages']
 
     - import_tasks: tasks/post-tasks.yml
-      when: configure_homefiles
+      when: manage_userfiles
       tags: ['post']
 
 #    - name: Run post-provision task files in a block.

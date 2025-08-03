@@ -15,8 +15,8 @@
     version: "{{ item.version | default(omit) }}"
     global: true
     executable: "{{ item.executable | default(omit) }}"
-    path: "{ npm_home }}"
-    executable: "{{ npm_home}}/bin"
+    path: "{{ npm_home }}"
+    executable: "{{ npm_home }}/bin"
   loop: "{{ npm_packages }}"
 
 - name: Install global Pip packages.
