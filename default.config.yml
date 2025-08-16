@@ -124,3 +124,7 @@ sublime_package_control:
 
 # Glob pattern to ansible task files to run after all other tasks are finished.
 post_provision_tasks: []
+
+# Variables for post-tasks.yml
+base_path: "/Users/{{ ansible_user }}/"
+new_path: "/Users/{{ ansible_user }}/Documents/backup/"

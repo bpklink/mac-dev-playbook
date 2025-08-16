@@ -48,11 +48,11 @@
       when: manage_userfiles
       tags: ['post']
 
-#    - name: Run post-provision task files in a block.
+#    - name: Run post-provision   aàtask files in a block.
 #      tags: ['post']
 #      block:
 #        - name: Run configured post-provision ansible task files.
-#        include_tasks: "{{ outer_item }}"
+#        include_tasks: "{{ outer_item }}à
 #          loop_control:
 #         with_fileglob: "{{ post_provision_tasks | default(omit) }}"
 #

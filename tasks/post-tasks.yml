@@ -1,24 +1,42 @@
 ---
-#  - name: Synchronize list home directories
-#    ansible.posix.synchronize:
-#      mode: push
-#      src: "/Users/{{ ansible_user }}/{{ item.src }}"
-#      dest: "/Users/{{ ansible_user }}/"
-#      recursive: true
-#      archive: true
-#      delay_updates: true
-#    loop: "{{ sync_dirs }}" 
 
   - name: Copy user files and directories
     ansible.posix.synchronize:
-      src: "/Users/{{ ansible_user }}/{{ item.src }}"
-      dest: "/Users/{{ ansible_user }}/{{ item.parent }}"
-      recursive: "{{ item.recurse }}" 
-      force: "{{ item.overwrite }}"
-      mode: "push"
+      src: "{{ abs_path }}/{{ item.src }}" 
+      dest: "{{ (item.is_alt_path) | ternary(alt_path, abs_path) }}/{{ item.src }}"
+      mode: push
       owner: true
-      delay_updates: true
+      delay_updates: false
       archive: true
+      recursive: "{{ item.recurse | default(true) }}"
+      delete: "{{ item.overwrite | default(false) }}"
+      rsync_opts:
+#        - "--archive"
+        - "-8"
+        - "--quiet"
+        - "--exclude=.DS_Store"
+        - "--exclude=*.tmp"
+        - "--exclude=*.log"
+        - "--exclude=.trash"
+        - "--exclude=.gitignore"
+    when: item.xfer
     become: true
-    when: "{{ item.xfer }}"
     loop: "{{ sync_user }}"
+
+
+# I'm not using copy module because it indicates it doesn't scale to hundreds of files
+# Alternative approach using copy module if synchronize continues to have issues
+#  - name: Copy user files and directories (alternative)
+#    copy:
+#      src: "{{ abs_path }}/{{ item.src }}"
+#      dest: "{{ (item.is_alt_path) | ternary(alt_path, abs_path) }}/{{ item.src }}"
+#      owner: "{{ ansible_user }}"
+#      group: "{{ ansible_user }}"
+#      mode: "preserve"
+#      mode: '0644'
+#      recursive: "{{ item.recurse | default(true) }}"
+#      backup: "{{ item.overwrite | default(false) }}"
+#    when: item.xfer
+#    loop: "{{ sync_user }}"
+
+
