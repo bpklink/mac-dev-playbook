@@ -3,7 +3,7 @@
   - name: Copy user files and directories
     ansible.posix.synchronize:
       src: "{{ abs_path }}/{{ item.src }}" 
-      dest: "{{ (item.is_alt_path) | ternary(alt_path, abs_path) }}/{{ item.src }}"
+      dest: "{{ (item.is_alt_path) | ternary(alt_path, abs_path) }}/"
       mode: push
       owner: true
       delay_updates: false
