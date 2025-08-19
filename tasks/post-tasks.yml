@@ -30,8 +30,7 @@
 #      dest: "{{ (item.is_alt_path) | ternary(alt_path, abs_path) }}/{{ item.src }}"
 #      owner: "{{ ansible_user }}"
 #      group: "{{ ansible_user }}"
-#      mode: "preserve"
-#      mode: '0644'
+#      mode: "preserve"sss     mode: '0644'
 #      recursive: "{{ item.recurse | default(true) }}"
 #      backup: "{{ item.overwrite | default(false) }}"
 #    when: item.xfer
