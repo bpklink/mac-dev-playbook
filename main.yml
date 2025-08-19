@@ -6,6 +6,9 @@
     -  config.yml
   #  - default.config.yml
 
+  environment:
+    PATH: "{{ myPATH }} : {{ ansible_env.PATH }}"
+
   pre_tasks:
     - name: Include playbook configuration.
       include_vars: "{{ item }}"

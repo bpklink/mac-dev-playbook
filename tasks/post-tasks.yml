@@ -11,7 +11,6 @@
       recursive: "{{ item.recurse | default(true) }}"
       delete: "{{ item.overwrite | default(false) }}"
       rsync_opts:
-#        - "--archive"
         - "-8"
         - "--quiet"
         - "--exclude=.DS_Store"
@@ -20,7 +19,6 @@
         - "--exclude=.trash"
         - "--exclude=.gitignore"
     when: item.xfer
-    become: true
     loop: "{{ sync_user }}"
 
 
