@@ -1,0 +1,880 @@
+---
+configure_dotfiles: false
+configure_terminal: false
+configure_osx: true
+configure_sudoers: true
+# Set to 'true' to configure the Dock via dockutil.
+configure_dock: true
+configure_extra: false
+# Copy user files (dot files) to the user's home directory
+manage_userfiles: true
+
+# Separated the $PATH variable into several lines for readability purposes
+myPATH: "/Users/{{ ansible_user }}/go/bin:/opt/X11/bin:/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/opt/homebrew/opt/postgresql@17/bin:/opt/homebrew/Cellar/sqlite/3.49.1/bin/:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/local/bin:/opt/homebrew/local/sbin:/opt/homebrew/opt/ansible/bin/:/Applications/Emacs.app/Contents/MacOS/:/System/Cryptexes/App/usr/bin:/usr/local/MacGPG2/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin"
+
+pip_home: "/opt/homebrew/"
+npm_home: "/opt/homebrew/"
+composer_home: "/opt/homebrew/bin/composer"
+
+dock_owner: "klink"
+dock_group: "admin"
+
+dockitems_remove: 
+  - Launchpad
+  - Freeform
+  - Pages
+  - Keynote
+  - Numbers
+  - Contacts
+  - Podcasts
+  - Music
+
+# - 'App Store'
+dockitems_persist:
+  - name: "Warp"
+    path: "/Applications/Warp.app/"
+    pos: 1
+  - name: "Finder"
+    path: "/System/Applications/Finder.app/"
+    pos: 2
+  - name: "Safari"
+    path: "/Applications/Safari.app/"
+    pos: 3
+  - name: "Opera"
+    path: "/Applications/Opera.app/"
+    pos: 4 
+  - name: "Firefox"
+    path: "/Applications/Firefox.app/"
+    pos: 5    
+  - name: "Ulysses"
+    path: "/Applications/Ulysses.app/"
+    pos: 6
+  - name: "Obsidian"
+    path: "/Applications/Obsidian.app/"
+    pos: 7
+  - name: "Cursor"
+    path: "/Applications/Cursor.app/"
+    pos: 8
+  - name: "GitHub Desktop"
+    path: "/Applications/GitHub Desktop.app"
+    pos: 9
+  - name: "Bambu Studio"
+    path: "/Applications/Bambu Studio.app/"
+    pos: 10
+  - name: "Milanote"
+    path: "/Applications/Milanote.app/"
+    pos: 11
+  - name: "Raycast"
+    path: "/Applications/Raycast.app/"
+    pos: 12
+
+#sudoers_custom_coV               GFOJI I0 I90808098-80808UOIUHHH                                                                                                                                                                                                                           IUUUOOUnfig: ""
+# Example:
+sudoers_custom_config: "%admin ALL=(ALL) NOPASSWD: ALL"
+   # Allow users in admin group to use sudo with no password.
+ 
+dotfiles_repo: https://github.com/bpklink/dotfiles.git
+dotfiles_repo_accept_hostkey: true
+dotfiles_repo_local_destination: ~/devops/dotfiles
+dotfiles_repo_version: master # Replace with your default branch
+dotfiles_files:
+  - .zshrc
+  - .gitignore
+  - .inputrc
+  - .osx
+  - .vimrc
+
+homebrew_installed_packages:
+  - abseil
+  - ansible-lint
+  - aom
+  - aribb24
+  - asitop
+  - at-spi2-core
+  - autoconf
+  - balena-cli
+  - bash-completion
+  - berkeley-db@5
+  - brotli
+  - btop
+  - c-ares
+  - ca-certificates
+  - cairo
+  - cffi
+  - cfitsio
+  - cgif
+  - cjson
+  - clisp
+  - cmake
+  - composer
+  - coreutils
+  - cryptography 
+  - dav1d
+  - dbus
+  - doxygen
+  - faac
+  - faad2
+  - fabric-ai
+  - falcosecurity-libs
+  - fdk-aac
+  - ffmpeg
+  - fftw
+  - flac
+  - fontconfig
+  - freetype
+  - frei0r
+  - fribidi
+  - gcc
+  - gd
+  - gdbm
+  - gdk-pixbuf
+  - ghostscript
+  - glib
+  - glib-networking
+  - gettext
+  - gifsicle
+  - git
+  - gh
+  - go
+  - gpg
+  - httpie
+  - iperf
+  - gpgme
+  - graphene
+  - graphite2
+  - gsettings-desktop-schemas
+  - gstreamer
+  - gtk+3
+  - gtk4
+  - harfbuzz
+  - hdf5
+  - hicolor-icon-theme
+  - highway
+  - homeassistant-cli
+  - hwloc
+  - icu4c@76
+  - icu4c@77
+  - iftop
+  - imagemagick
+  - imath
+  - innotop
+  - iproute2mac
+  - isl 
+  - jasper
+  - jbig2dec
+  - jpeg-turbo
+  - jpeg-xl
+  - json-glib
+  - jsoncpp
+  - krb5
+  - lame
+  - leptonica
+  - libaec
+  - libarchive
+  - libass
+  - libassuan
+  - libavif
+  - libb2
+  - libbluray
+  - libcbor
+  - libcuefile
+  - libde265
+  - libdeflate
+  - libdicom
+  - libepoxy
+  - libevent
+  - libexif
+  - libfido2
+  - libgcrypt
+  - libgpg-error
+  - libheif
+  - libidn
+  - libidn2
+  - libimagequant
+  - libksba
+  - liblinear
+  - liblqr
+  - libmatio
+  - libmicrohttpd
+  - libmpc
+  - libnghttp2
+  - libnice
+  - libogg
+  - libomp
+  - libpng
+  - libpsl
+  - libraw
+  - libreplaygain
+  - librist
+  - librsvg
+  - libsamplerate
+  - libshout
+  - libsigsegv
+  - libsndfile
+  - libsodium
+  - libsoup
+  - libsoxr
+  - libspng
+  - libssh
+  - libssh2
+  - libtasn1
+  - libtiff
+  - libtool
+  - libunibreak
+  - libunistring
+  - libusb
+  - libusrsctp
+  - libuv
+  - libvidstab
+  - libvmaf
+  - libvorbis
+  - libvpx
+  - libx11
+  - libxau
+  - libxcb
+  - libxdmcp
+  - libxext
+  - libxfixes
+  - libxft
+  - libxi
+  - libxml2
+  - libxrender
+  - libxtst
+  - libyaml
+  - little-cms2
+  - lua
+  - luajit
+  - lz4
+  - lzo
+  - m4
+  - mas
+  - mbedtls
+  - minicom
+  - mozjpeg
+  - mpdecimal
+  - mpfr
+  - mpg123
+  - musepack
+  - mysql-client
+  - ncurses
+  - nettle
+  - nmap
+  - node@20
+  - npm
+  - npth
+  - nspr
+  - nss
+  - ntp
+  - nvm
+  - nvtop
+  - open-mpi
+  - opencore-amr
+  - openexr
+  - openjdk
+  - openjpeg
+  - openslide
+  - openssl@3
+  - opus
+  - orc
+  - p11-kit
+  - pandoc
+  - pango
+  - pcre2
+  - perl
+  - pinentry
+  - pipx
+  - pixman
+  - pkgconf
+  - plotutils
+  - pmix
+  - poppler
+  - postgresql@14
+  - postgresql@17
+  - potrace
+  - pstoedit
+  - putty
+  - py3cairo
+  - pycparser
+  - pyenv
+  - pygobject3
+  - python-gdbm@3.11
+  - python-packaging
+  - python-tk@3.11
+  - python@3.10
+  - python@3.11
+  - python@3.12
+  - python@3.13
+  - rav1e
+  - re2
+  - readline
+  - rtmpdump
+  - rubberband
+  - ruby
+  - sdl2
+  - shared-mime-info
+  - snappy
+  - speex
+  - sqlite
+  - srt
+  - srtp
+  - starship
+  - svt-av1
+  - sword
+  - syncthing
+  - sysdig
+  - taglib
+  - tbb
+  - tcl-tk@8
+  - tesseract
+  - texlive
+  - theora
+  - unbound
+  - utf8cpp
+  - uthash
+  - vips
+  - webp
+  - wget 
+  - whisper-cpp
+  - wireshark
+  - x264
+  - x265
+  - xorgproto
+  - xvid
+  - xz
+  - yaml-cpp
+  - zeromq
+  - zimg
+  - zlib
+  - zsh-history-substring-search
+  - zstd
+
+homebrew_taps: []
+                                                                      
+homebrew_cask_appdir: /Applications
+
+homebrew_cask_apps:
+  - autodesk-fusion
+  - arduino-ide@nightly
+  - balenaetcher
+  - bambu-connect
+  - bambu-studio
+  - bitwarden
+  - blender
+  - blender-benchmark
+  - brave-browser
+  - chatgpt
+  - claude
+  - cleanshot
+  - cursor
+  - db-browser-for-sqlite
+  - dbeaver-community
+  - dd-utility
+  - discord
+  - docker
+  - duckduckgo
+  - emacs
+  - firefox
+  - font-open-dyslexic-nerd-font
+  - font-shure-tech-mono-nerd-font
+  - font-space-mono-nerd-font
+  - geekbench
+  - geekbench-ai
+  - gimp
+  - github
+  - gitkraken
+  - gpg-suite
+  - gpgfrontend
+  - ha-menu
+  - handbrake
+  - jellyfin
+  - jellyfin-media-player
+  - json-viewer
+  - keyguard
+#  - kindle
+  - llamachat
+  - lm-studio
+  - messenger
+  - milanote
+  - obs
+  - obs-advanced-scene-switcher
+  - obs-backgroundremoval
+  - obsidian
+  - opera
+  - raspberry-pi-imager
+  - raycast
+  - rustdesk
+  - sequel-ace
+  - signal
+  - slack
+  - spotify
+  - sqlitemanager
+  - sqlitestudio
+  - stratoshark
+  - syncthing
+  - tailscale
+  - transmit
+  - vscodium
+  - warp
+  - wireshark-app
+#  - wireshark-bpf
+  - zoom
+  - zotero
+
+# See `geerlingguy.mac.mas` role documentation for usage instructions.
+mas_path: "{{ '/opt/homebrew/bin/mas' if ansible_architecture == 'arm64' else '/usr/local/bin/mas' }}"
+
+mas_installed_apps:
+  - { id: 497799835, name: "Xcode" } 
+  - { id: 1225570693, name: "Ulysses: Writing App" }
+  - { id: 409183694, name: "Keynote (14.4)" }
+  - { id: 409203825, name: "Numbers (14.4)" }
+  - { id: 409201541, name: "Pages (14.4)" }
+  - { id: 682658836, name: "GarageBand (10.4.12)" }
+  - { id: 545519333, name: "Amazon Prime Video" }
+  - { id: 413564952, name: "Home Inventory (3.8.6)" }
+  - { id: 1324203419, name: "Ground News" }
+  - { id: , name: "Raycast Companion" }
+  - { id: , name: "Magnet (3.0.7)" }
+  - { id: , name: "Reolink" }
+  - { id: , name: "Amazon Kindle" }
+  - { id: 1276493162, name: "reMarkable (3.19.0)" }
+  - { id: 877615577, name: "Serial (1.4.11)" }
+  - { id: 425424353, name: "The Unarchiver (4.3.9)" }
+  - { id: 455970963, name: "Disk Doctor (4.5)" }
+  - { id: 1480068668, name: "Messenger (512.0.0)" }
+  - { id: 968437868, name: "e-Sword X (9.5)" }
+  - { id: , name: "Gemini 2 (2.9.11)" }
+  - { id: 963642514, name: "Duplicate Photos Fixer Pro (9.1)" }
+  - { id: , name: "Ivory (2.3.5)" }
+  - { id: 288545208, name: "Instapaper (9.1.2)" }
+  - { id: 6720708363, name: "Obsidian Web Clipper" }
+  - { id: 1545870783, name: "Color Picker (2.1.2)" }
+  - { id: , name: "Mint QuickView (2.0.1)" }
+  - { id: 1594190145, name: "GitHub Wiki Search (1.0)" }
+  - { id: , name: "Grammarly for Safari (9.80)" }
+  - { id: SAVE, name: "Save to Pinterest (6.9.0)" } 
+  - { id: 1477385213, name: "Save to Pocket (1.1)" }
+  - { id: 409183694, name: "Save to Raindrop.io (5.6.77)" }
+  - { id: 490152466, name: "iBooks Author (2.6.1)" }
+  - { id: 1482920575, name: "DuckDuckGo Privacy for Safari (1.8.0)" }
+
+
+# Mobile apps or unneeded  - 
+#  - { id: 434808346, name: "SimpleMind Pro (2.7.0)" }
+#  - { id: 1524335878, name: "Under My Roof" }
+#  - { id: 1352778147, name: "Bitwarden (2025.6.1)" }
+#  - { id: 379693831, name: "Audible: Audio Entertainmnet" }
+#  - { id: 1499974081, name: "Scott Lib (MN)" }
+#  - { id: 1443890897, name: "Marcus Theatres & Movie Tavern" }
+#  - { id: 407517450, name: "Papa Johns Pizza & Delivery" }
+#  - { id: 310633997, name: "WhatsApp Messenger" }
+#  - { id: 1444143600, name: "What's covered" }
+#  - { id: 1549587642, name: "Not the Bee" }
+#  - { id: 1475189792, name: "The Babylon Bee" }
+#  - { id: 333903271, name: "X" }
+#  - { id: 282614216, name: "eBay" }
+#  - { id: 1501409164, name: "Dick's Sanitation" }
+#  - { id: 1336642410, name: "craigslist" }
+#  - { id: 682824301, name: "UW Alumni Association" }
+#  - { id: 1267476611, name: "Huskies Gameday" }
+#  - { id: 1612739014, name: "Autopylot for Drones" }
+#  - { id: 417922502, name: "Fishing Spots - Fish Maps" }
+#  - { id: 1419734607, name: "Custer State Park" }
+#  - { id: 1549226484, name: "National Park Service"}
+#  - { id: 1552572916, name: "CSC GO" }
+#  - { id: 501439458, name: "Go Outdoors SD" }
+#  - { id: 1186159417, name: "TP-Link Deco" }
+#  - { id: 1418116475, name: "BlueCrossMN Mobile" }
+#  - { id: 1132762804, name: "NewsBreak: Local News & Alerts" }
+#  - { id: 496790833, name: "The Bible Memory App" }
+#  - { id: 1401371704, name: "Hy-vee" }
+#  - { id: 382497397, name: "Sam's Club: Pickup & Delivery" }
+#  - { id: 1592153121, name: "Cub Grocery & Liquor" }
+# - { id: 308750436, name: "Dictionary.com: English Words" }
+#  - { id: 664709236, name: "Minnesota 511" }
+#  - { id: 468404991, name: "CodeRED Mobile Alert " }
+#  - { id: 593306620, name: "Units Plus Converter" } 
+#  - { id: 475772902, name: "Night Sky" }
+#  - { id: 316793974, name: "FlightAware Flight Tracker" }
+#  - { id: 430921891, name: "Menards" }
+#  - { id: 457954781, name: "Lowe's Home Improvement" }
+#  - { id: 925338276, name: "JCPenney – Shopping & Coupons " }
+#  - { id: 1502197298, name: "Tractor Supply" }
+#  - { id: 1538761576, name: "Authenticator App" }
+#  - { id: 1533833273, name: "Harbor Freight" }
+#  - { id: 1520073967, name: "Cabela's" }
+# - { id: 879452214, name: "BILT" }
+#  - { id: 399452287, name: "Merriam-Webster" }
+#  - { id: 1608392803, name: "Trustpilot: Reviews & Ratings" }
+#  - { id: 295646461, name: "Weather - The Weather Channel" }
+#  - { id: 1216396545, name: "Storm Radar: Weather Tracker" }
+#  - { id: , name: "WesternNational" }
+#  - { id: 1403308360, name: "Sport Clips" }
+#  - { id: 1449803898, name: "Route: Package Tracker" }
+#  - { id: 1170452592, name: "DJIGO 4" }
+#  - { id: 1625671285, name: "Bambu Handy" }
+#  - { id: , name: "Bambu Studio" }
+#  - { id: 477967747, name: "Fishbrain - Fishing App" }
+# - { id: 913335252, name: "Brilliant: Learn by doin" }
+#  - { id: 454638411, name: "Messenger" }
+#  - { id: 6448311069, name: "ChatGPT" }
+#  - { id: 1397972267, name: "LPLAccountView" }
+#  - { id: 283646709, name: "PayPal" }
+#  - { id: 351727428, name: "Venmo" } 
+#  - { id: 989804926, name: "Firefox: Private Web Browser" }
+#  - { id: 1044456188, name: "Patreon" }
+# - { id: 338137227, name: "Walmart" } 
+#  - { id: 535509415, name: "Costco" }
+#  - { id: 1530642656, name: "Raising Canes Chicken Finger" }
+#  - { id: 1557206126, name: "Snipd | AI Podcast Player" }
+#  - { id: 274957816, name: "reMarkable" }
+#  - { id: 1523055436, name: "MyNumotion" }
+# - { id: 485357017, name: "GoodRx" }
+#  - { id: 1322690077, name: "Optum Bank" }
+# - { id: 317469184, name: "ESPN: Live Sports & Scores" }
+# - { id: 294056623, name: "Fox Sports: Watch Live Games" } 
+# - { id: 1446075923, name: "Disney+" }
+# - { id: 376510438, name: "Hulu: Stream TV shows & movie" }
+# - { id: 297606951, name: "Amazon Shopping" }
+# - { id: 886445756, name: "Tubi: Movies & Live TV" }
+# - { id: 544007664, name: "YouTube" }
+# - { id: 1498327873, name: "discovery+ | Stream TV Shows " }
+#  - { id: 6443956656, name: "The Chosen" }
+#  - { id: 1473663873, name: "Angel: TV & Movies " }
+#  - { id: 1411869974, name: "Opera:s AI browser with VPN" }
+#  - { id: ,"Mint QuickView"}
+#  - { id: 367623543, name: "Fox News: US & World Headlines"}
+#  - { id: , name: "RightNow Media" }
+#  - { id: 311548709, name: "Wells Fargo Mobile" }
+#  - { id: 301724680, name: "Citi Mobile" }
+#  - { id: 407558537, name: "Capital One Mobile" }
+#  - { id: 454638411, name: "Messenger" }
+#  - { id: 284882215, name: "Facebook" }
+#  - { id: 389801252, name: "Instagram" }
+#  - { id: 1064216828, name: "Reddit" }
+#  - { id: 429047995, name: "Pinterest" }
+#  - { id: 460177396, name: "Twitch: Live Streaming" }
+#  - { id: 1357742931, name: "Church Center" }
+#  - { id: 1581650857, name: "Substack" }
+#  - { id: 1477121348, name: "Canopy Client Portal" }
+#  - { id: 464988855, name: "Nest" }
+#  - { id: 456282559, name: "myQ Garage & Access Contro" }
+#  - { id: 1476830649, name: "Halo Collar" }
+#  - { id: 1095418609, name: "FordPass" }
+#  - { id: 864325098, name: "Rachio" }
+#  - { id: 1438652819, name: "Chirp Audiobooks" }
+#  - { id: 1076402606, name: "Libby, the library app " }
+#  - { id: 971358255, name: "Caribou Coffee" }
+#  - { id: 331177714, name: "Starbucks" }
+#  - { id: 307906541, name: "Fandango - Get Movie Tickets" }
+#  - { id: 296581815, name: "OpenTable" }
+#  - { id: 970107419, name: "Hello Fresh: Meal Kit Deliver" }
+#  - { id: 1348316600, name: "UnitedHealthcare" }
+#  - { id: 335364882, name: "Walgreens" }
+#  - { id: 1265997284, name: "Allina Health" }
+#  - { id: 1109518523, name: "myAir™ by Resmed" }
+#  - { id: 382952264, name: "MyChart" }
+#  - { id: 971941597, name: "MyPetsWellness" }
+#  - { id: 295076329, name: "WebMD: Symptom Checker" }
+#  - { id: 1149449468, name: "Chewy" }
+#  - { id: 1410437380, name: "SilverSneakers" }
+#  - { id: 574923765, name: "LiNX Access" }
+#  - { id: 1206613340, name: "MyLinx" }
+#  - { id: 985746746, name: "Discord - Talk, Play, Hang Out " }
+#  - { id: 1537660143, name: "Scheels" }
+#  - { id: 1175467091, name: "PetSmart" }
+#  - { id: 1533699196, name: "Fleet Farm" }
+#  - { id: 983156458, name: "Microsoft Authenticator" }
+#  - { id: 388497605, name: "Google Authenticator" }
+
+mas_email: "bpklink66@gmail.com"
+mas_password: "Bpk97Klk07Xnk!"
+
+osx_script: "~/.osx --no-restart"
+
+# Install packages from other package managers.
+# Note: You are responsible for making sure the required package managders are
+# installed, eg. through homebrew.saasdda
+composer_packages: []
+# - name: drush
+#   state: present # present/absent, default: present
+#   version: "^8.1" # default: N/A
+gem_packages: []
+# - name: bundler
+#   state: present # present/absent/latest, default: present 
+#   version: "~> 1.15.1" # default: N/A
+
+pip_packages: 
+  - name: mkdocs
+#    state: present # present/absent/latest, default: present
+#    version: "0.16.3" # default: N/A
+  - name: open-webui
+npm_packages: 
+  - name: react
+#    state: present
+#    version: N/A
+  - name: react-dom
+#    state: present
+# - version: N/A
+  - name: excalidraw
+#    state: present # present/absent/latest, default: present
+#    version: N/A #"^2.6" # default: N/A# Set to 'true' to configure Sublime Text.
+# configure_sublime: false
+# sublime_base_path: "~/Library/Application Support/Sublime Text"
+# sublime_config_path: "Packages/User"
+# sublime_package_control:
+#  - "DocBlockr"
+#  - "Dockerfile Syntax Highlighting"
+#  - "FileDiffs"
+#  - "GitHub Flavored Markdown Preview"
+#  - "Jinja2"
+#  - "Package Control"
+#  - "Pretty JSON"
+#  - "SublimeLinter"
+#  - "SublimeLinter-contrib-yamllint"
+#  - "Theme - Cobalt2"
+#  - "TrailingSpaces"
+#  - "WordingStatus"
+
+# Glob pattern to ansible task files to run after all other tasks are finished.
+post_provision_tasks: []
+
+abs_path: "/Users/{{ ansible_user }}"
+# An alternative path - the full path to replace absolute path
+alt_path: ""
+
+sync_user: 
+  # User directories
+  - src: "Documents"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: "Bambu"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: "devops"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+
+  - src: "sql"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: "Zotero"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: ".oh-my-zsh"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: "go"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: "bin"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".gnupg"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".ssh"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".ansible"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".config"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".starship"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".cursor"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".cursor-tutor"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".cisco"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".cpan"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".bash_sessions"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".docker"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".npm"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".ollama"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".emacs.d"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".pulsar"
+    is_alt_path: false
+    xfer: true  
+    recurse: true
+    overwrite: true
+  - src: ".local"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".scrypted"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".pyenv"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: true
+  - src: ".Xcode"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: true  
+  - src: ".swt"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: true  
+  - src: ".zsh_sessions"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: true  
+
+# User files
+  - src: ".zshrc"
+    is_alt_path: false
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".bashrc"
+    is_alt_path: false
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".bash_history"
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".profile"
+    is_alt_path: false 
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".login"
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".zprofile"
+    is_alt_path: false                                                                                        
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".zsh_history"
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".zsh_sessions"
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".Xauthority"    
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".gitconfig"
+    is_alt_path: false  
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".mime.types"
+    is_alt_path: false
+    xfer: true
+    recurse: false
+    overwrite: true
+  - src: ".mailcap"
+    is_alt_path: false
+    xfer: true
+    recurse: false
+    overwrite: true
+# Very large directories - separate from all the other stuff
+  - src: "Movies"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: "Music"
+    is_alt_path: false  
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: "Pictures"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: false
+  - src: "WINTK"
+    is_alt_path: false
+    xfer: true
+    recurse: true
+    overwrite: false
+    exclude: ""    
+#   rsync_opts: "--exclude=some/relative/path/some/file.txt"
+#   rsync_path: "dvc"
+#   rsync_timeout: 30
